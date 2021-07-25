@@ -5,6 +5,7 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+import sqlite3
 
 def home(request):
     """Renders the home page."""
@@ -34,6 +35,7 @@ def contact(request):
 def about(request):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
+    con = sqlite3.connect('db.sqlite3')
     return render(
         request,
         'app/about.html',
